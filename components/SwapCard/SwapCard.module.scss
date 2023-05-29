@@ -1,0 +1,35 @@
+@use "../../styles/components/utils" as *;
+
+.container {
+  width: 440px;
+  height: 120px;
+  background-color: $P2; // ?
+  display: flex;
+  flex-direction: column;
+  padding: 48px 32px;
+  position: relative;
+  border-radius: $borderRadius;
+}
+.body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.label {
+  position: absolute;
+  top: 16px;
+  left: 32px;
+  text-transform: uppercase;
+  columns: $N8;
+  font-weight: 500;
+  font-size: 12px;
+}
+.item {
+  max-width: 66px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.input {
+  flex-grow: 1;
+}

@@ -1,0 +1,21 @@
+@use "../../styles/components/utils" as *;
+
+.input {
+  border: none;
+  outline: none;
+  appearance: none;
+  background-color: inherit;
+  color: $N8;
+  text-align: right;
+  transition: all 0.2s ease 0s;
+  font-size: rem(16);
+  cursor: pointer;
+  &::placeholder {
+    color: $N8;
+  }
+  @media (any-hover: hover) {
+    &:hover::placeholder {
+      color: $N6;
+    }
+  }
+}

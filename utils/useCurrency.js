@@ -1,9 +1,16 @@
 import { useState } from "react";
 
 export const useCurrency = () => {
-  const [amount, setAmount] = useState(25);
-  const [currencyOne, setCurrencyOne] = useState("UAH");
-  const [currencyTwo, setCurrencyTwo] = useState("BTC");
+  const [amount, setAmount] = useState("");
+  const [currencyFirst, setCurrencyFirst] = useState("UAH");
+  const [currencySecond, setCurrencySecond] = useState("BTC");
 
-  return { amount, currencyOne, currencyTwo };
+  return {
+    amount,
+    currencyFirst,
+    currencySecond,
+    setAmount,
+    setCurrencyFirst,
+    setCurrencySecond,
+  };
 };

@@ -21,6 +21,7 @@
     }
   }
 }
+// icon
 .icon {
   width: 24px;
   height: 24px;
@@ -29,6 +30,11 @@
 .icon-swap {
   fill: $N0;
 }
+.icon-refresh {
+  fill: $N0;
+}
+
+// Primary
 .variant-primary {
   width: 40px;
   height: 40px;
@@ -46,6 +52,25 @@
     background-color: $P2;
     .icon-swap {
       fill: $N0;
+    }
+  }
+}
+
+// Subtle
+.variant-subtle {
+  width: 40px;
+  height: 40px;
+  background-color: inherit;
+  @media (any-hover: hover) {
+    &:hover {
+      .icon-refresh {
+        fill: $P1;
+      }
+    }
+  }
+  &:active {
+    .icon-refresh {
+      fill: $P2;
     }
   }
 }

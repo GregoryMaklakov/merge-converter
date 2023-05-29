@@ -11,13 +11,10 @@
 .logo {
   fill: $P1;
   transition: all 0.2s ease 0s;
+  fill: $N0;
   @media (any-hover: hover) {
     &:hover {
-      fill: $N1;
+      fill: $N4;
     }
   }
-}
-
-.test {
-  font-size: rem(16);
 }
