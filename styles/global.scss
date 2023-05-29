@@ -1,0 +1,95 @@
+@use "@styles/vars.scss" as *;
+/* &display=swap */
+
+body,
+button,
+textarea,
+input,
+select {
+  font-family: var(--font-spaceGrotesk);
+}
+/* Reset */
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+*,
+*:before,
+*:after {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+:focus,
+:active {
+  outline: none;
+}
+a:focus,
+a:active {
+  outline: none;
+}
+html {
+  font-size: $baseFontSize;
+  background-color: $N_12;
+}
+
+html,
+body {
+  height: 100%;
+  // font-family: $primary-font;
+  color: $baseFontColor;
+}
+body {
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+input,
+button,
+textarea {
+  font-size: inherit;
+  box-shadow: inherit;
+}
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: inherit;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul li {
+  list-style: none;
+}
+img {
+  vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: calc(800px + $mobile-container-padding-x);
+  padding: {
+    left: $mobile-container-padding-x;
+    right: $mobile-container-padding-x;
+  }
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+
+.popup-open {
+  overflow-y: hidden;
+}
