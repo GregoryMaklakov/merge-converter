@@ -1,0 +1,51 @@
+@use "@styles/components/utils.scss" as *;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease 0s;
+  &:disabled {
+    cursor: not-allowed;
+    background-color: $N_10;
+    .icon-swap {
+      fill: $N8;
+    }
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $N_10;
+        .icon-swap {
+          fill: $N8;
+        }
+      }
+    }
+  }
+}
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.2s ease 0s;
+}
+.icon-swap {
+  fill: $N0;
+}
+.variant-primary {
+  width: 40px;
+  height: 40px;
+  background-color: $P1;
+  border-radius: $borderRadius;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $N0;
+      .icon-swap {
+        fill: $P1;
+      }
+    }
+  }
+  &:active {
+    background-color: $P2;
+    .icon-swap {
+      fill: $N0;
+    }
+  }
+}

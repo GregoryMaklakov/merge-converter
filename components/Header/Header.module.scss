@@ -1,0 +1,23 @@
+@use "@styles/components/utils.scss" as *;
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 88px;
+}
+
+.logo {
+  fill: $P1;
+  transition: all 0.2s ease 0s;
+  @media (any-hover: hover) {
+    &:hover {
+      fill: $N1;
+    }
+  }
+}
+
+.test {
+  font-size: rem(16);
+}
