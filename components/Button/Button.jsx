@@ -3,11 +3,11 @@ import clsx from "clsx";
 import { Icon, ICON_TYPES } from "@components/Icon/Icon";
 import styles from "./Button.module.scss";
 
-export function Button({ icon, variant, disabled, onClick, className, }) {
+export function Button({ icon, variant, isDisabled, onClick, className, }) {
     return (
         <button
             variant={variant}
-            disabled={disabled}
+            disabled={isDisabled}
             onClick={onClick}
             className={clsx(styles.button, className, styles[`variant-${variant}`])}
         >
@@ -21,4 +21,6 @@ Button.propTypes = {
     onClick: PropTypes.func.isRequired,
     variant: PropTypes.oneOf(["primary", "subtle"]),
     icon: PropTypes.oneOf(Object.values(ICON_TYPES)),
+    isDisabled: PropTypes.bool,
 };
+
