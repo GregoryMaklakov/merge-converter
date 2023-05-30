@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { Space_Grotesk } from "next/font/google";
 import { Header } from "@components/Header";
 import "@styles/global.scss";
-import clsx from "clsx";
 
 
 const spaceGrotesk = Space_Grotesk({
@@ -13,7 +12,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata = {
     title: "Merge Converter",
-    description: "Some description",
+    description: "Description",
 };
 
 export default function RootLayout({ children }) {

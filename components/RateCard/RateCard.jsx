@@ -1,15 +1,23 @@
-import clsx from "clsx";
-import PropTypes from "prop-types";
+// import clsx from "clsx";
+// import PropTypes from "prop-types";
 import styles from "./RateCard.module.scss";
 import { Button } from "@components/Button";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { fetchRate } from "@api/fetchData";
 import { LoadingButton } from "@components/LoadingButton";
-import { useCurrency } from "@utils/useCurrency";
+import { CurrencyContext, } from "@utils/CurrencyContext";
 import { randomWait } from "@libs/helpers";
+import numeral from 'numeral';
 
 export function RateCard() {
-    const { currencyFirst, currencySecond } = useCurrency();
+    const {
+        fromCurrency,
+        toCurrency,
+        setFromCurrency,
+        setToCurrency,
+        firstAmount,
+        setFirstAmount,
+    } = useContext(CurrencyContext)
 
     const [rate, setRate] = useState(0);
     const [isLoading, setIsLoading] = useState(true);
@@ -36,6 +44,9 @@ export function RateCard() {
         await loadData();
     };
 
+    const reverseRate = 1 / rate;
+    const formattedReverseRate = reverseRate.toFixed(7)
+
     return (
         <div className={styles.rateCard}>
             <div>
@@ -43,10 +54,20 @@ export function RateCard() {
                     <LoadingButton />
                 ) : (
                     <>
-                        <span>1{currencySecond}</span> =
-                        <span>
-                            {rate} {currencyFirst}
-                        </span>
+                        <div className={styles.amount}>
+                            <span>1 {fromCurrency}</span>
+                            <span className={styles.equal}>=</span>
+                            <span>
+                                {numeral(rate).format("0,0.00")} {toCurrency}
+                            </span>
+                        </div>
+                        <div className={styles.amount}>
+                            <span>1 {toCurrency}</span>
+                            <span className={styles.equal}>=</span>
+                            <span>
+                                {numeral(formattedReverseRate).format("0,0.0000000")} {fromCurrency}
+                            </span>
+                        </div>
                     </>
                 )}
             </div>

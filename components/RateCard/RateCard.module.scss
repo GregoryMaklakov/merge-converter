@@ -11,3 +11,16 @@
   border-radius: $borderRadius;
   padding: 24px 32px;
 }
+
+.amount {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  color: $N0;
+  gap: 4px;
+}
+.equal {
+  color: $N9;
+}

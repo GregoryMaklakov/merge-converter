@@ -2,13 +2,16 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import styles from "./Input.module.scss"
 import { forwardRef } from "react";
-import { debounce, isNumber } from "lodash";
+import { isNumber } from "lodash";
 
 
 export const Input = forwardRef(({ value, className, disabled, onChange }, ref) => {
+
     const handleChange = (event) => {
+        const inputValue = event.target.value;
+        const numericValue = inputValue.replace(/[^0-9.]/g, "");
         if (onChange) {
-            onChange(event.target.value);
+            onChange(numericValue !== "" ? parseFloat(numericValue) : "");
         }
     };
 
