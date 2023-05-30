@@ -1,0 +1,13 @@
+@use "../../styles/components/utils" as *;
+
+.rateCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 440px;
+
+  height: 72px;
+  background-color: $N_10;
+  border-radius: $borderRadius;
+  padding: 24px 32px;
+}

@@ -3,12 +3,26 @@
 .container {
   width: 440px;
   height: 120px;
-  background-color: $P2; // ?
+  background-color: $N_12; // ?
   display: flex;
   flex-direction: column;
   padding: 48px 32px;
   position: relative;
   border-radius: $borderRadius;
+  transition: all 0.2s ease 0s;
+  cursor: pointer;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $N_11;
+      input {
+        transition: all 0.2s ease 0s;
+        color: $N0;
+        &::placeholder {
+          color: $N6;
+        }
+      }
+    }
+  }
 }
 .body {
   display: flex;

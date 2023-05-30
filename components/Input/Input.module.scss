@@ -18,4 +18,13 @@
       color: $N6;
     }
   }
+  :disabled {
+    color: $N_10;
+    cursor: no-drop;
+    @media (any-hover: hover) {
+      &:hover {
+        color: $N_10;
+      }
+    }
+  }
 }
