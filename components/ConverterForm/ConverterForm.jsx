@@ -10,7 +10,7 @@ import { CurrencyContext } from "@utils/CurrencyContext";
 import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
 
-export function ConverterForm({ }) {
+export function ConverterForm() {
     const {
         fromCurrency,
         setFromCurrency,
@@ -30,7 +30,6 @@ export function ConverterForm({ }) {
         fromCurrencyIcon: "bitcoin",
         toCurrencyIcon: "flag",
     });
-
 
     useEffect(() => {
         loadData();

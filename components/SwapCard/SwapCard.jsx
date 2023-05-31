@@ -73,4 +73,6 @@ SwapCard.propTypes = {
     isSell: PropTypes.bool,
     value: PropTypes.string,
     isLoaded: PropTypes.bool,
+    convertFrom: PropTypes.string,
+    convertTo: PropTypes.string,
 };
