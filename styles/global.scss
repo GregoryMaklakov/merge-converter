@@ -79,7 +79,7 @@ body {
   position: relative;
   &::before {
     content: "";
-    background-image: url("../public/assets/images/BG.png");
+    background-image: url("/assets/images/BG.png");
     position: absolute;
     top: 50%;
     left: 50%;
