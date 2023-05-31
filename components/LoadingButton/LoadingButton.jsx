@@ -1,9 +1,9 @@
-import React from 'react'
 import styles from "./LoadingButton.module.scss"
+import clsx from 'clsx'
 
-export function LoadingButton() {
+export function LoadingButton({ className }) {
     return (
-        <span className={styles.buttonLoading}>
+        <span className={clsx(styles.buttonLoading, className)}>
             <div className={styles.dot}></div>
             <div className={styles.dot}></div>
             <div className={styles.dot}></div>

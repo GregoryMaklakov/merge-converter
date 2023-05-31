@@ -2,8 +2,7 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import styles from "./Input.module.scss"
 import { forwardRef } from "react";
-import { isNumber } from "lodash";
-
+import { NumericFormat } from 'react-number-format';
 
 export const Input = forwardRef(({ value, className, disabled, onChange }, ref) => {
 
@@ -18,6 +17,8 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
     return (
         <div>
             <input
+                maxLength={13}
+                min={0}
                 ref={ref}
                 type="text"
                 inputMode="decimal"

@@ -31,7 +31,6 @@ export function ConverterForm({ }) {
         toCurrencyIcon: "flag",
     });
 
-
     useEffect(() => {
         loadData();
     }, []);
@@ -60,7 +59,6 @@ export function ConverterForm({ }) {
         event.preventDefault();
         await loadData();
     }, []);
-
 
     const handleSwap = useCallback(
         (event) => {
@@ -138,7 +136,7 @@ export function ConverterForm({ }) {
                     icon={currencyIcons.fromCurrencyIcon}
                     convertFrom={fromCurrency}
                     convertTo={toCurrency}
-                // isLoaded={"loaging"}
+                    isLoaded={isLoaded}
                 />
                 <SwapCard
                     value={toCurrencyAmount.toString()}
@@ -147,7 +145,7 @@ export function ConverterForm({ }) {
                     icon={currencyIcons.toCurrencyIcon}
                     convertFrom={toCurrency}
                     convertTo={fromCurrency}
-                // isLoaded={"loaging"}
+                    isLoaded={isLoaded}
                 />
                 <Button
                     variant="primary"

@@ -6,16 +6,19 @@ export const CurrencyContext = createContext();
 
 const CurrencyProvider = ({ children }) => {
   const [fromCurrency, setFromCurrency] = useState("BTC");
+  const [fromCurrencyAmount, setFromCurrencyAmount] = useState("");
   const [toCurrency, setToCurrency] = useState("UAH");
-  const [firstAmount, setFirstAmount] = useState("");
+  const [toCurrencyAmount, setToCurrencyAmount] = useState("");
 
   const value = {
     fromCurrency,
     setFromCurrency,
+    fromCurrencyAmount,
+    setFromCurrencyAmount,
     toCurrency,
     setToCurrency,
-    firstAmount,
-    setFirstAmount,
+    toCurrencyAmount,
+    setToCurrencyAmount,
   };
   return (
     <CurrencyContext.Provider value={value}>
