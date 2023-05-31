@@ -111,6 +111,15 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: {
+      left: 16px;
+      right: 16px;
+    }
+  }
+}
+
 .popup-open {
   overflow-y: hidden;
 }
