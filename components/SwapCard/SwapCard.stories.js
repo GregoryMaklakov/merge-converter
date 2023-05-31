@@ -1,4 +1,4 @@
-import { SwapCard } from "@components/SwapCard";
+import { SwapCard } from "./SwapCard";
 
 export default {
   title: "components/SwapCard",
@@ -16,7 +16,7 @@ export default {
 };
 
 function Template(args) {
-  return <SwapCard style={{ width: "440px" }} {...args} />;
+  return <SwapCard {...args} />;
 }
 
 export const Default = Template.bind({});

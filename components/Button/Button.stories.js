@@ -1,5 +1,5 @@
-import { Button } from "@components/Button";
-import { ICON_TYPES } from "@components/Icon/Icon";
+import { Button } from "./Button";
+import { ICON_TYPES } from "../Icon/Icon";
 
 export default {
   title: "components/Button",

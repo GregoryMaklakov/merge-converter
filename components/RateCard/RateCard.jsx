@@ -2,16 +2,9 @@ import clsx from "clsx";
 import PropTypes from "prop-types";
 import styles from "./RateCard.module.scss";
 import { Button } from "@components/Button";
-import { useContext } from "react";
 import { LoadingButton } from "@components/LoadingButton";
-import { CurrencyContext, } from "@utils/CurrencyContext";
 
-export function RateCard({ isLoaded, rate, onClick, className }) {
-    const {
-        fromCurrency,
-        toCurrency,
-    } = useContext(CurrencyContext)
-
+export function RateCard({ isLoaded, rate, onClick, className, fromCurrency, toCurrency }) {
     return (
         <div className={clsx(styles.rateCard, className)}>
             <div>
@@ -44,5 +37,6 @@ RateCard.propTypes = {
     onClick: PropTypes.func,
     isLoaded: PropTypes.bool,
     base: PropTypes.string,
-    convertTo: PropTypes.string,
+    toCurrency: PropTypes.string,
+    fromCurrency: PropTypes.string,
 }

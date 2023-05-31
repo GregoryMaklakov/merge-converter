@@ -11,16 +11,16 @@ import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
 
 export function ConverterForm() {
-    const {
-        fromCurrency,
-        setFromCurrency,
-        toCurrency,
-        setToCurrency,
-        fromCurrencyAmount,
-        setFromCurrencyAmount,
-        toCurrencyAmount,
-        setToCurrencyAmount,
-    } = useContext(CurrencyContext);
+    // const {
+    //     fromCurrency,
+    //     setFromCurrency,
+    //     toCurrency,
+    //     setToCurrency,
+    //     fromCurrencyAmount,
+    //     setFromCurrencyAmount,
+    //     toCurrencyAmount,
+    //     setToCurrencyAmount,
+    // } = useContext(CurrencyContext);
 
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);
@@ -30,6 +30,10 @@ export function ConverterForm() {
         fromCurrencyIcon: "bitcoin",
         toCurrencyIcon: "flag",
     });
+    const [fromCurrency, setFromCurrency] = useState("BTC");
+    const [fromCurrencyAmount, setFromCurrencyAmount] = useState("");
+    const [toCurrency, setToCurrency] = useState("UAH");
+    const [toCurrencyAmount, setToCurrencyAmount] = useState("");
 
     useEffect(() => {
         loadData();
@@ -137,7 +141,7 @@ export function ConverterForm() {
                     isSell={isSell}
                     icon={currencyIcons.fromCurrencyIcon}
                     convertFrom={fromCurrency}
-                    convertTo={toCurrency}
+                    fromCurrency={fromCurrency}
                 // isLoaded={"loaging"}
                 />
                 <SwapCard
@@ -146,7 +150,7 @@ export function ConverterForm() {
                     isSell={!isSell}
                     icon={currencyIcons.toCurrencyIcon}
                     convertFrom={toCurrency}
-                    convertTo={fromCurrency}
+                    fromCurrency={fromCurrency}
                 // isLoaded={"loaging"}
                 />
                 <Button
@@ -159,6 +163,8 @@ export function ConverterForm() {
             <RateCard
                 onClick={handleRefreshClick}
                 isLoaded={isLoaded}
+                fromCurrency={fromCurrency}
+                toCurrency={toCurrency}
                 rate={
                     swapClicked
                         ? numeral(reverseRate).format("0,0.0000000")
