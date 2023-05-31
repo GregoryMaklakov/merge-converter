@@ -119,12 +119,13 @@ export function ConverterForm({ }) {
     useEffect(() => {
         const convertedAmount = calculateConvertedAmount(fromCurrencyAmount);
         setToCurrencyAmount(convertedAmount);
-    }, [fromCurrencyAmount, calculateConvertedAmount]);
+    }, [fromCurrencyAmount, calculateConvertedAmount, setToCurrencyAmount]);
 
     useEffect(() => {
         const baseAmount = calculateBaseAmount(toCurrencyAmount);
         setFromCurrencyAmount(baseAmount);
-    }, [toCurrencyAmount, calculateBaseAmount]);
+    }, [toCurrencyAmount, calculateBaseAmount, setFromCurrencyAmount]);
+
 
     const reverseRate = useMemo(() => (1 / rate).toFixed(7), [rate]);
 

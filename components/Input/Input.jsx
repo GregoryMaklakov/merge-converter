@@ -17,6 +17,7 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
     return (
         <div>
             <input
+                name="input"
                 maxLength={13}
                 min={0}
                 ref={ref}
@@ -32,7 +33,7 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
     );
 });
 
-
+Input.displayName = "Input";
 Input.propTypes = {
     value: PropTypes.string,
     disabled: PropTypes.bool,

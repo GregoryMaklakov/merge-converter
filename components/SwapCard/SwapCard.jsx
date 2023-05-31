@@ -64,6 +64,7 @@ export const SwapCard = forwardRef(
     }
 );
 
+SwapCard.displayName = "SwapCard";
 SwapCard.propTypes = {
     icon: PropTypes.string.isRequired,
     className: PropTypes.string,
