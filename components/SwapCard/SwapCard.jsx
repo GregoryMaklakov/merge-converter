@@ -5,11 +5,13 @@ import { forwardRef, useEffect, useRef, useState } from "react";
 import { Input } from "@components/Input";
 import styles from "./SwapCard.module.scss";
 import { LoadingButton } from "@components/LoadingButton";
+import numeral from "numeral";
 
 export const SwapCard = forwardRef(
     ({ className, onChange, isSell, convertFrom, convertTo, icon, isLoaded, value }, ref) => {
 
         const [isActive, setIsActive] = useState(false);
+
         const handleClickContainer = () => {
             if (inputRef.current) {
                 inputRef.current.focus();

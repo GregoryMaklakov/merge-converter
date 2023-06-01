@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useContext, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@components/Button";
 import { SwapCard } from "@components/SwapCard";
 import styles from "./ConverterForm.module.scss";
