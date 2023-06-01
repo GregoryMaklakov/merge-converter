@@ -1,5 +1,5 @@
 import { ConverterForm } from "@components/ConverterForm";
-import "@styles/global.scss";
+import "@styles/globals.scss";
 
 
 export default function Home() {

@@ -1,3 +1,4 @@
+// import { motion } from 'framer-motion';
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@components/Button";
 import { SwapCard } from "@components/SwapCard";
@@ -6,7 +7,7 @@ import { RateCard } from "@components/RateCard";
 import numeral from "numeral";
 import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
-import { motion } from "framer-motion";
+
 
 export function ConverterForm() {
     const [rate, setRate] = useState(0);
@@ -70,6 +71,7 @@ export function ConverterForm() {
             toCurrencyAmount,
             setToCurrencyAmount,
             swapClicked,
+
         ]
     );
 
@@ -89,55 +91,49 @@ export function ConverterForm() {
         await randomWait();
         setFromCurrencyLoading(false);
     }, []);
-
-    const calculateConvertedAmount = useCallback(
-        (baseAmount) => {
-            const convertedAmount = parseFloat(baseAmount);
-            if (isNaN(convertedAmount)) {
-                return "";
-            }
-            if (fromCurrency === "BTC" && toCurrency === "UAH") {
-                return (convertedAmount * rate).toString();
-            } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-                return (convertedAmount / rate).toString();
-            }
+    function calculateConvertedAmount(baseAmount, fromCurrency, toCurrency, rate) {
+        const convertedAmount = parseFloat(baseAmount);
+        if (isNaN(convertedAmount)) {
             return "";
-        },
-        [fromCurrency, toCurrency, rate]
-    );
+        }
+        if (fromCurrency === "BTC" && toCurrency === "UAH") {
+            return (convertedAmount * rate).toString();
+        } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
+            return (convertedAmount / rate).toString();
+        }
+        return "";
+    }
 
-    const calculateBaseAmount = useCallback(
-        (convertedAmount) => {
-            const baseAmount = parseFloat(convertedAmount);
-            if (isNaN(baseAmount)) {
-                return "";
-            }
-            if (fromCurrency === "BTC" && toCurrency === "UAH") {
-                return (baseAmount / rate).toString();
-            } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-                return (baseAmount * rate).toString();
-            }
+    function calculateBaseAmount(convertedAmount, fromCurrency, toCurrency, rate) {
+        const baseAmount = parseFloat(convertedAmount);
+        if (isNaN(baseAmount)) {
             return "";
-        },
-        [fromCurrency, toCurrency, rate]
-    );
+        }
+        if (fromCurrency === "BTC" && toCurrency === "UAH") {
+            return (baseAmount / rate).toString();
+        } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
+            return (baseAmount * rate).toString();
+        }
+        return "";
+    }
 
     useEffect(() => {
-        const convertedAmount = calculateConvertedAmount(fromCurrencyAmount);
+        const convertedAmount = calculateConvertedAmount(fromCurrencyAmount, fromCurrency, toCurrency, rate);
         setToCurrencyAmount(convertedAmount);
-    }, [fromCurrencyAmount, calculateConvertedAmount, setToCurrencyAmount]);
+    }, [fromCurrencyAmount, fromCurrency, toCurrency, rate, setToCurrencyAmount]);
 
     useEffect(() => {
-        const baseAmount = calculateBaseAmount(toCurrencyAmount);
+        const baseAmount = calculateBaseAmount(toCurrencyAmount, fromCurrency, toCurrency, rate);
         setFromCurrencyAmount(baseAmount);
-    }, [toCurrencyAmount, calculateBaseAmount, setFromCurrencyAmount]);
+    }, [toCurrencyAmount, fromCurrency, toCurrency, rate, setFromCurrencyAmount]);
 
     const reverseRate = useMemo(() => (1 / rate).toFixed(7), [rate]);
 
+
     //Animation
+    // const MotionButton = motion(Button)
     //========================================================================================================================================================
 
-    const MotionButton = motion(Button)
 
     return (
         <form className={styles.form}>
@@ -160,13 +156,13 @@ export function ConverterForm() {
                     fromCurrency={fromCurrency}
                     isLoaded={toCurrencyLoading}
                 />
-                <MotionButton
+                <Button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
                     variant="primary"
                     icon="swap"
                     onClick={handleSwap}
                     className={styles.button}
-                // whileHover={{ scale: 1.1 }}
-                // whileTap={{ scale: 0.9 }}
                 />
             </div>
             <RateCard

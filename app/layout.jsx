@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Space_Grotesk } from "next/font/google";
 import { Header } from "@components/Header";
-import "@styles/global.scss";
+import "@styles/globals.scss";
 
 
 const spaceGrotesk = Space_Grotesk({

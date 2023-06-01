@@ -1,4 +1,5 @@
 import { SwapCard } from "./SwapCard";
+import "../../styles/globals.scss";
 
 export default {
   title: "components/SwapCard",
