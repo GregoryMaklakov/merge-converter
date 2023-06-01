@@ -22,8 +22,8 @@ function Template(args) {
   return <Icon {...args} />;
 }
 
-export const Single = Template.bind({});
-Single.args = {
+export const Logo = Template.bind({});
+Logo.args = {
   name: "logo",
   size: 200,
   color: "white",
@@ -33,7 +33,7 @@ export function Multiple() {
   return (
     <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center" }}>
       {iconNames.map((icon) => (
-        <div key={icon} style={{ margin: "14px" }}>
+        <div key={icon} style={{ margin: "18px" }}>
           <Icon size={32} name={icon} color="white" />
         </div>
       ))}

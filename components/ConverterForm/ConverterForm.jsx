@@ -1,26 +1,16 @@
 "use client";
 
-import { useState, useEffect, useContext, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@components/Button";
 import { SwapCard } from "@components/SwapCard";
 import styles from "./ConverterForm.module.scss";
 import { RateCard } from "@components/RateCard";
 import numeral from "numeral";
-import { CurrencyContext } from "@utils/CurrencyContext";
 import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
 
 export function ConverterForm() {
-    // const {
-    //     fromCurrency,
-    //     setFromCurrency,
-    //     toCurrency,
-    //     setToCurrency,
-    //     fromCurrencyAmount,
-    //     setFromCurrencyAmount,
-    //     toCurrencyAmount,
-    //     setToCurrencyAmount,
-    // } = useContext(CurrencyContext);
+
 
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);
