@@ -7,16 +7,16 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
 
     const handleChange = (event) => {
         const rawValue = event.target.value;
-        const cleanedValue = rawValue.replace(/[^\d.]/g, '');
-        if (cleanedValue === '.') {
-            onChange(cleanedValue);
-            return;
-        }
-        const hasExistingDot = value.includes('.');
-        const formattedValue = hasExistingDot ? cleanedValue : cleanedValue.replace(/^(\d+)(\.\d*)?$/, '$1.$2');
+        const cleanedValue = rawValue.replace(/[^0-9.,]/g, '');
+
+        const dotCount = cleanedValue.split('.').length - 1;
+        const commaCount = cleanedValue.split(',').length - 1;
+
+        let formattedValue = cleanedValue.replace(/\.+/g, dotCount > 1 ? '' : '.');
+        formattedValue = formattedValue.replace(/,+/g, commaCount > 0 ? '' : '.');
+
         onChange(formattedValue);
     };
-
     return (
         <div>
             <input
