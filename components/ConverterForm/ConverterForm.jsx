@@ -6,7 +6,6 @@ import { SwapCard } from "@components/SwapCard";
 import styles from "./ConverterForm.module.scss";
 import { RateCard } from "@components/RateCard";
 import numeral from "numeral";
-import { CurrencyContext } from "@utils/CurrencyContext";
 import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
 
@@ -77,6 +76,29 @@ export function ConverterForm() {
         ]
     );
 
+    const [fromCurrencyLoading, setFromCurrencyLoading] = useState(false);
+    const [toCurrencyLoading, setToCurrencyLoading] = useState(false);
+
+    const handleFromCurrencyInput = useCallback(
+        async (value) => {
+            setFromCurrencyAmount(value);
+            setToCurrencyLoading(true);
+            await randomWait();
+            setToCurrencyLoading(false);
+        },
+        []
+    );
+
+    const handleToCurrencyInput = useCallback(
+        async (value) => {
+            setToCurrencyAmount(value);
+            setFromCurrencyLoading(true);
+            await randomWait();
+            setFromCurrencyLoading(false);
+        },
+        []
+    );
+
     const calculateConvertedAmount = useCallback(
         (baseAmount) => {
             const convertedAmount = parseFloat(baseAmount);
@@ -127,21 +149,21 @@ export function ConverterForm() {
             <div className={styles.swapCards}>
                 <SwapCard
                     value={fromCurrencyAmount.toString()}
-                    onChange={(value) => setFromCurrencyAmount(value)}
+                    onChange={handleFromCurrencyInput}
                     isSell={isSell}
                     icon={currencyIcons.fromCurrencyIcon}
                     convertFrom={fromCurrency}
                     fromCurrency={fromCurrency}
-                // isLoaded={"loaging"}
+                    isLoaded={fromCurrencyLoading}
                 />
                 <SwapCard
                     value={toCurrencyAmount.toString()}
-                    onChange={(value) => setToCurrencyAmount(value)}
+                    onChange={handleToCurrencyInput}
                     isSell={!isSell}
                     icon={currencyIcons.toCurrencyIcon}
                     convertFrom={toCurrency}
                     fromCurrency={fromCurrency}
-                // isLoaded={"loaging"}
+                    isLoaded={toCurrencyLoading}
                 />
                 <Button
                     variant="primary"

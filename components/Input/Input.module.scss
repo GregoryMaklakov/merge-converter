@@ -9,6 +9,7 @@
   text-align: right;
   transition: all 0.2s ease 0s;
   font-size: rem(16);
+  font-weight: 500;
   cursor: pointer;
   &::placeholder {
     color: $N8;
