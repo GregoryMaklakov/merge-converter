@@ -1,5 +1,3 @@
-"use client";
-
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { Button } from "@components/Button";
 import { SwapCard } from "@components/SwapCard";
@@ -8,9 +6,9 @@ import { RateCard } from "@components/RateCard";
 import numeral from "numeral";
 import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
+import { motion } from "framer-motion";
 
 export function ConverterForm() {
-
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);
     const [swapClicked, setSwapClicked] = useState(false);
@@ -25,15 +23,15 @@ export function ConverterForm() {
     const [toCurrencyAmount, setToCurrencyAmount] = useState("");
 
     useEffect(() => {
-        loadData();
-    }, []);
-
-    useEffect(() => {
         setCurrencyIcons({
             fromCurrencyIcon: swapClicked ? "flag" : "bitcoin",
             toCurrencyIcon: swapClicked ? "bitcoin" : "flag",
         });
     }, [swapClicked]);
+
+    useEffect(() => {
+        loadData();
+    }, []);
 
     const loadData = async () => {
         setIsLoading(true);
@@ -52,7 +50,6 @@ export function ConverterForm() {
         event.preventDefault();
         await loadData();
     }, []);
-
 
     const handleSwap = useCallback(
         (event) => {
@@ -79,25 +76,19 @@ export function ConverterForm() {
     const [fromCurrencyLoading, setFromCurrencyLoading] = useState(false);
     const [toCurrencyLoading, setToCurrencyLoading] = useState(false);
 
-    const handleFromCurrencyInput = useCallback(
-        async (value) => {
-            setFromCurrencyAmount(value);
-            setToCurrencyLoading(true);
-            await randomWait();
-            setToCurrencyLoading(false);
-        },
-        []
-    );
+    const handleFromCurrencyInput = useCallback(async (value) => {
+        setFromCurrencyAmount(value);
+        setToCurrencyLoading(true);
+        await randomWait();
+        setToCurrencyLoading(false);
+    }, []);
 
-    const handleToCurrencyInput = useCallback(
-        async (value) => {
-            setToCurrencyAmount(value);
-            setFromCurrencyLoading(true);
-            await randomWait();
-            setFromCurrencyLoading(false);
-        },
-        []
-    );
+    const handleToCurrencyInput = useCallback(async (value) => {
+        setToCurrencyAmount(value);
+        setFromCurrencyLoading(true);
+        await randomWait();
+        setFromCurrencyLoading(false);
+    }, []);
 
     const calculateConvertedAmount = useCallback(
         (baseAmount) => {
@@ -141,8 +132,12 @@ export function ConverterForm() {
         setFromCurrencyAmount(baseAmount);
     }, [toCurrencyAmount, calculateBaseAmount, setFromCurrencyAmount]);
 
-
     const reverseRate = useMemo(() => (1 / rate).toFixed(7), [rate]);
+
+    //Animation
+    //========================================================================================================================================================
+
+    const MotionButton = motion(Button)
 
     return (
         <form className={styles.form}>
@@ -165,11 +160,13 @@ export function ConverterForm() {
                     fromCurrency={fromCurrency}
                     isLoaded={toCurrencyLoading}
                 />
-                <Button
+                <MotionButton
                     variant="primary"
                     icon="swap"
                     onClick={handleSwap}
                     className={styles.button}
+                // whileHover={{ scale: 1.1 }}
+                // whileTap={{ scale: 0.9 }}
                 />
             </div>
             <RateCard
