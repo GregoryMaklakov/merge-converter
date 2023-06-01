@@ -58,3 +58,9 @@
 .input {
   flex-grow: 1;
 }
+
+@media (max-width: 360px) {
+  .container {
+    padding: 48px 16px;
+  }
+}

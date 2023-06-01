@@ -23,3 +23,9 @@
 .equal {
   color: $N9;
 }
+
+@media (max-width: 360px) {
+  .rateCard {
+    padding: 24px 16px;
+  }
+}

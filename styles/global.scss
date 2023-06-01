@@ -119,3 +119,11 @@ body {
     }
   }
 }
+@media (max-width: 360px) {
+  .container {
+    padding: {
+      left: 4px;
+      right: 4px;
+    }
+  }
+}

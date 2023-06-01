@@ -11,16 +11,6 @@ import { fetchRate } from "@api/fetchData";
 import { randomWait } from "@libs/helpers";
 
 export function ConverterForm() {
-    // const {
-    //     fromCurrency,
-    //     setFromCurrency,
-    //     toCurrency,
-    //     setToCurrency,
-    //     fromCurrencyAmount,
-    //     setFromCurrencyAmount,
-    //     toCurrencyAmount,
-    //     setToCurrencyAmount,
-    // } = useContext(CurrencyContext);
 
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);

@@ -36,7 +36,6 @@ RateCard.propTypes = {
     className: PropTypes.string,
     onClick: PropTypes.func,
     isLoaded: PropTypes.bool,
-    base: PropTypes.string,
     toCurrency: PropTypes.string,
     fromCurrency: PropTypes.string,
 }
