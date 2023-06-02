@@ -1,5 +1,6 @@
 import { Button } from "./Button";
 import { ICON_TYPES } from "../Icon/Icon";
+import "../../styles/globals.scss"
 
 export default {
   title: "components/Button",

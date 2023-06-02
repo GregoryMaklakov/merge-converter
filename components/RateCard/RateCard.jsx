@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
+import { Button } from "../Button";
+import { LoadingButton } from "../LoadingButton";
 import styles from "./RateCard.module.scss";
-import { Button } from "@components/Button";
-import { LoadingButton } from "@components/LoadingButton";
+
 
 export function RateCard({ isLoaded, rate, onClick, className, fromCurrency, toCurrency }) {
     return (
@@ -33,6 +34,7 @@ export function RateCard({ isLoaded, rate, onClick, className, fromCurrency, toC
 }
 
 RateCard.propTypes = {
+    rate: PropTypes.string,
     className: PropTypes.string,
     onClick: PropTypes.func,
     isLoaded: PropTypes.bool,

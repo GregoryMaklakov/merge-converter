@@ -1,4 +1,6 @@
 import { Icon, ICON_TYPES } from "./Icon";
+import "../../styles/globals.scss";
+
 const iconNames = Object.keys(ICON_TYPES);
 
 export default {

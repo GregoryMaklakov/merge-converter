@@ -15,12 +15,8 @@ const previewAnnotations = {
   docs: {
     autodocs: "tag",
   },
-  webpackFinal: async (config, { configType }) => {
-    config.resolve.alias["@components"] = path.resolve(
-      __dirname,
-      "../components"
-    );
-
+  webpackFinal: async (config) => {
+    config.resolve.modules.push(path.resolve(__dirname, "../components"));
     return config;
   },
 };

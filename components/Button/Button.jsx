@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { Icon, ICON_TYPES } from "@components/Icon/Icon";
+import { Icon, ICON_TYPES } from "../Icon";
 import styles from "./Button.module.scss";
 
 export function Button({ icon, variant, isDisabled, onClick, className, }) {

@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import PropTypes from "prop-types";
-import styles from "./Input.module.scss"
 import { forwardRef } from "react";
+import styles from "./Input.module.scss"
+
 
 export const Input = forwardRef(({ value, className, disabled, onChange }, ref) => {
 
@@ -22,7 +23,6 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
             <input
                 name="input"
                 maxLength={13}
-                min={0}
                 ref={ref}
                 type="text"
                 inputMode="decimal"

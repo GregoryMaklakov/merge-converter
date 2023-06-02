@@ -1,4 +1,5 @@
-import { RateCard } from "@components/RateCard";
+import { RateCard } from "../RateCard";
+import "../../styles/globals.scss";
 
 export default {
   title: "components/RateCard",

@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { Icon } from "@components/Icon/Icon";
+import { Icon } from "../Icon";
 import { forwardRef, useEffect, useRef, useState } from "react";
-import { Input } from "@components/Input";
-import styles from "./SwapCard.module.scss";
-import { LoadingButton } from "@components/LoadingButton";
+import { Input } from "../Input";
+import { LoadingButton } from "../LoadingButton";
 import numeral from "numeral";
+import styles from "./SwapCard.module.scss";
+
 
 export const SwapCard = forwardRef(
     ({ className, onChange, isSell, convertFrom, convertTo, icon, isLoaded, value }, ref) => {

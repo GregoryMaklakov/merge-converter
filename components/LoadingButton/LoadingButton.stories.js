@@ -1,4 +1,5 @@
 import { LoadingButton } from "./LoadingButton";
+import "../../styles/globals.scss";
 
 export default {
   title: "components/LoadingButton",

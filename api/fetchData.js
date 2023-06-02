@@ -1,4 +1,4 @@
-import { axios } from "@libs/axios";
+import { axios } from "../libs/axios";
 
 export const fetchRate = async () => {
   try {

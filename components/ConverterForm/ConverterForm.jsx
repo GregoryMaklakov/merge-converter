@@ -1,12 +1,12 @@
-// import { motion } from 'framer-motion';
 import { useState, useEffect, useMemo, useCallback } from "react";
-import { Button } from "@components/Button";
-import { SwapCard } from "@components/SwapCard";
-import styles from "./ConverterForm.module.scss";
-import { RateCard } from "@components/RateCard";
+import { Button } from "../Button";
+import { SwapCard } from "../SwapCard";
+import { RateCard } from "../RateCard";
+import { fetchRate } from "../../api/fetchData";
+import { randomWait } from "../../libs/helpers";
+
 import numeral from "numeral";
-import { fetchRate } from "@api/fetchData";
-import { randomWait } from "@libs/helpers";
+import styles from "./ConverterForm.module.scss";
 
 
 export function ConverterForm() {
@@ -83,6 +83,7 @@ export function ConverterForm() {
         setToCurrencyLoading(true);
         await randomWait();
         setToCurrencyLoading(false);
+
     }, []);
 
     const handleToCurrencyInput = useCallback(async (value) => {
@@ -91,28 +92,29 @@ export function ConverterForm() {
         await randomWait();
         setFromCurrencyLoading(false);
     }, []);
-    function calculateConvertedAmount(baseAmount, fromCurrency, toCurrency, rate) {
+
+    const calculateConvertedAmount = (baseAmount, fromCurrency, toCurrency, rate) => {
         const convertedAmount = parseFloat(baseAmount);
         if (isNaN(convertedAmount)) {
             return "";
         }
         if (fromCurrency === "BTC" && toCurrency === "UAH") {
-            return (convertedAmount * rate).toString();
+            return (convertedAmount * rate);
         } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-            return (convertedAmount / rate).toString();
+            return (convertedAmount / rate);
         }
         return "";
     }
 
-    function calculateBaseAmount(convertedAmount, fromCurrency, toCurrency, rate) {
+    const calculateBaseAmount = (convertedAmount, fromCurrency, toCurrency, rate) => {
         const baseAmount = parseFloat(convertedAmount);
         if (isNaN(baseAmount)) {
             return "";
         }
         if (fromCurrency === "BTC" && toCurrency === "UAH") {
-            return (baseAmount / rate).toString();
+            return (baseAmount / rate);
         } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-            return (baseAmount * rate).toString();
+            return (baseAmount * rate);
         }
         return "";
     }
@@ -139,7 +141,7 @@ export function ConverterForm() {
         <form className={styles.form}>
             <div className={styles.swapCards}>
                 <SwapCard
-                    value={fromCurrencyAmount.toString()}
+                    value={fromCurrencyAmount}
                     onChange={handleFromCurrencyInput}
                     isSell={isSell}
                     icon={currencyIcons.fromCurrencyIcon}
@@ -148,7 +150,7 @@ export function ConverterForm() {
                     isLoaded={fromCurrencyLoading}
                 />
                 <SwapCard
-                    value={toCurrencyAmount.toString()}
+                    value={toCurrencyAmount}
                     onChange={handleToCurrencyInput}
                     isSell={!isSell}
                     icon={currencyIcons.toCurrencyIcon}

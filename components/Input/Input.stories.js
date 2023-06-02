@@ -1,4 +1,5 @@
 import { Input } from "./Input";
+import "../../styles/globals.scss";
 
 export default {
   title: "components/Input",
