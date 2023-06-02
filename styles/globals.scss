@@ -30,7 +30,6 @@ a:active {
 }
 html {
   font-size: $baseFontSize;
-  background-color: $N_12;
 }
 
 html,
@@ -78,6 +77,7 @@ h6 {
 }
 body {
   position: relative;
+  background-color: $N_12;
   &::before {
     content: "";
     background-image: url("/assets/images/BG.png");

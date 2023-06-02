@@ -14,6 +14,10 @@ export default {
       control: { type: "select" },
     },
   },
+  decorators: [SwapCard => <div style={{
+    backgroundColor: "#44526C",
+    padding: "2rem"
+  }}><SwapCard /></div>]
 };
 
 function Template(args) {
