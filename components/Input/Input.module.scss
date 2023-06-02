@@ -11,6 +11,8 @@
   cursor: pointer;
   &::placeholder {
     color: $N8;
+    font-weight: 500;
+    font-family: "Space Grotesk", sans-serif;
   }
   @media (any-hover: hover) {
     &:hover::placeholder {

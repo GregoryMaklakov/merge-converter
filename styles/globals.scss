@@ -5,7 +5,8 @@ button,
 textarea,
 input,
 select {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: $baseFontFamily;
+  font-weight: 500;
 }
 
 /* Reset */
@@ -93,11 +94,16 @@ body {
     background-repeat: no-repeat;
   }
 }
+
 .home {
   min-height: calc(100vh - 88px);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+input::placeholder {
+  font-family: $baseFontFamily;
+  font-weight: 500;
 }
 .container {
   width: 100%;
