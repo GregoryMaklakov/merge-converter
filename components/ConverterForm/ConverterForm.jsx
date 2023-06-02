@@ -1,10 +1,10 @@
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { Button } from "../Button";
 import { SwapCard } from "../SwapCard";
 import { RateCard } from "../RateCard";
 import { fetchRate } from "../../api/fetchData";
 import { randomWait } from "../../libs/helpers";
-
+import { motion } from "framer-motion";
 import numeral from "numeral";
 import styles from "./ConverterForm.module.scss";
 
@@ -144,7 +144,14 @@ export function ConverterForm() {
     const reverseRate = (1 / rate).toFixed(7);
 
     //Animation
-
+    const buttonRef = useRef(null);
+    const MotionButton = motion(Button)
+    const springAnimation = {
+        scale: [1, 0.8, 1.04],
+        transition: {
+            duration: 0.2,
+        },
+    };
     //========================================================================================================================================================
 
     return (
@@ -168,7 +175,9 @@ export function ConverterForm() {
                     fromCurrency={fromCurrency}
                     isLoaded={toCurrencyLoading}
                 />
-                <Button
+                <MotionButton
+                    ref={buttonRef}
+                    whileTap={springAnimation}
                     variant="primary"
                     icon="swap"
                     onClick={handleSwap}
