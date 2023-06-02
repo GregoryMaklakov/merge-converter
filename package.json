@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_3835cd741b86937"
   },
   "dependencies": {
     "@netlify/plugin-nextjs": "^4.37.4",
@@ -35,6 +36,7 @@
     "@storybook/react": "^7.0.18",
     "@storybook/testing-library": "^0.0.14-next.2",
     "babel-loader": "^8.3.0",
+    "chromatic": "^6.18.0",
     "eslint-plugin-storybook": "^0.6.12",
     "sass": "^1.62.1",
     "storybook": "^7.0.18"
