@@ -74,7 +74,7 @@ SwapCard.propTypes = {
     onChange: PropTypes.func,
     label: PropTypes.string,
     isSell: PropTypes.bool,
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     isLoaded: PropTypes.bool,
     convertFrom: PropTypes.string,
     convertTo: PropTypes.string,

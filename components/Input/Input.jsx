@@ -24,7 +24,7 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
                 name="input"
                 maxLength={13}
                 ref={ref}
-                type="text"
+                type="number"
                 inputMode="decimal"
                 className={clsx(styles.input, className)}
                 disabled={disabled}
@@ -38,7 +38,7 @@ export const Input = forwardRef(({ value, className, disabled, onChange }, ref) 
 
 Input.displayName = "input";
 Input.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     disabled: PropTypes.bool,
     className: PropTypes.string,
     onChange: PropTypes.func,
