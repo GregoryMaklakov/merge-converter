@@ -8,7 +8,6 @@ import { randomWait } from "../../libs/helpers";
 import numeral from "numeral";
 import styles from "./ConverterForm.module.scss";
 
-
 export function ConverterForm() {
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);
@@ -63,15 +62,10 @@ export function ConverterForm() {
         },
         [
             fromCurrency,
-            setFromCurrency,
             toCurrency,
-            setToCurrency,
             fromCurrencyAmount,
-            setFromCurrencyAmount,
             toCurrencyAmount,
-            setToCurrencyAmount,
             swapClicked,
-
         ]
     );
 
@@ -83,7 +77,6 @@ export function ConverterForm() {
         setToCurrencyLoading(true);
         await randomWait();
         setToCurrencyLoading(false);
-
     }, []);
 
     const handleToCurrencyInput = useCallback(async (value) => {
@@ -93,49 +86,67 @@ export function ConverterForm() {
         setFromCurrencyLoading(false);
     }, []);
 
-    const calculateConvertedAmount = (baseAmount, fromCurrency, toCurrency, rate) => {
+    const calculateConvertedAmount = (
+        baseAmount,
+        fromCurrency,
+        toCurrency,
+        rate
+    ) => {
         const convertedAmount = parseFloat(baseAmount);
         if (isNaN(convertedAmount)) {
             return "";
         }
         if (fromCurrency === "BTC" && toCurrency === "UAH") {
-            return (convertedAmount * rate);
+            return convertedAmount * rate;
         } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-            return (convertedAmount / rate);
+            return convertedAmount / rate;
         }
         return "";
-    }
+    };
 
-    const calculateBaseAmount = (convertedAmount, fromCurrency, toCurrency, rate) => {
+    const calculateBaseAmount = (
+        convertedAmount,
+        fromCurrency,
+        toCurrency,
+        rate
+    ) => {
         const baseAmount = parseFloat(convertedAmount);
         if (isNaN(baseAmount)) {
             return "";
         }
         if (fromCurrency === "BTC" && toCurrency === "UAH") {
-            return (baseAmount / rate);
+            return baseAmount / rate;
         } else if (fromCurrency === "UAH" && toCurrency === "BTC") {
-            return (baseAmount * rate);
+            return baseAmount * rate;
         }
         return "";
-    }
+    };
 
     useEffect(() => {
-        const convertedAmount = calculateConvertedAmount(fromCurrencyAmount, fromCurrency, toCurrency, rate);
+        const convertedAmount = calculateConvertedAmount(
+            fromCurrencyAmount,
+            fromCurrency,
+            toCurrency,
+            rate
+        );
         setToCurrencyAmount(convertedAmount);
     }, [fromCurrencyAmount, fromCurrency, toCurrency, rate, setToCurrencyAmount]);
 
     useEffect(() => {
-        const baseAmount = calculateBaseAmount(toCurrencyAmount, fromCurrency, toCurrency, rate);
+        const baseAmount = calculateBaseAmount(
+            toCurrencyAmount,
+            fromCurrency,
+            toCurrency,
+            rate
+        );
         setFromCurrencyAmount(baseAmount);
     }, [toCurrencyAmount, fromCurrency, toCurrency, rate, setFromCurrencyAmount]);
 
     const reverseRate = useMemo(() => (1 / rate).toFixed(7), [rate]);
 
-
     //Animation
     // const MotionButton = motion(Button)
     //========================================================================================================================================================
-
 
     return (
         <form className={styles.form}>
