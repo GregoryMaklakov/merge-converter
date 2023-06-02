@@ -11,4 +11,8 @@ function Template(args) {
 }
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  rate: "11,969.02",
+  toCurrency: "BTC",
+  fromCurrency: "UAH",
+};
