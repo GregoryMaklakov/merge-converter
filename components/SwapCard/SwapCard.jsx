@@ -4,12 +4,11 @@ import { Icon } from "../Icon";
 import { forwardRef, useEffect, useRef, useState } from "react";
 import { Input } from "../Input";
 import { LoadingButton } from "../LoadingButton";
-import numeral from "numeral";
 import styles from "./SwapCard.module.scss";
 
 
 export const SwapCard = forwardRef(
-    ({ className, onChange, isSell, convertFrom, convertTo, icon, isLoaded, value }, ref) => {
+    ({ className, onChange, label, convertFrom, convertTo, icon, isLoaded, value }, ref) => {
 
         const [isActive, setIsActive] = useState(false);
 
@@ -45,7 +44,7 @@ export const SwapCard = forwardRef(
                 onBlur={handleContainerBlur}
                 ref={ref}
             >
-                <p className={styles.label}>{isSell ? "You Buy" : "You sell"}</p>
+                <p className={styles.label}>{label}</p>
                 <div className={styles.body}>
                     <div className={styles.item}>
                         <Icon name={icon} size={24} className={styles.icon} />
@@ -73,7 +72,7 @@ SwapCard.propTypes = {
     className: PropTypes.string,
     onChange: PropTypes.func,
     label: PropTypes.string,
-    isSell: PropTypes.bool,
+    label: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     isLoaded: PropTypes.bool,
     convertFrom: PropTypes.string,

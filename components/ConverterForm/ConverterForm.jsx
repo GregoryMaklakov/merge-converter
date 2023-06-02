@@ -12,7 +12,6 @@ export function ConverterForm() {
     const [rate, setRate] = useState(0);
     const [isLoaded, setIsLoading] = useState(true);
     const [swapClicked, setSwapClicked] = useState(false);
-    const [isSell] = useState(true);
     const [currencyIcons, setCurrencyIcons] = useState({
         fromCurrencyIcon: "bitcoin",
         toCurrencyIcon: "flag",
@@ -142,10 +141,10 @@ export function ConverterForm() {
         setFromCurrencyAmount(baseAmount);
     }, [toCurrencyAmount, fromCurrency, toCurrency, rate, setFromCurrencyAmount]);
 
-    const reverseRate = useMemo(() => (1 / rate).toFixed(7), [rate]);
+    const reverseRate = (1 / rate).toFixed(7);
 
     //Animation
-    // const MotionButton = motion(Button)
+
     //========================================================================================================================================================
 
     return (
@@ -154,7 +153,7 @@ export function ConverterForm() {
                 <SwapCard
                     value={fromCurrencyAmount}
                     onChange={handleFromCurrencyInput}
-                    isSell={isSell}
+                    label="You Sell"
                     icon={currencyIcons.fromCurrencyIcon}
                     convertFrom={fromCurrency}
                     fromCurrency={fromCurrency}
@@ -163,15 +162,13 @@ export function ConverterForm() {
                 <SwapCard
                     value={toCurrencyAmount}
                     onChange={handleToCurrencyInput}
-                    isSell={!isSell}
+                    label="You Buy"
                     icon={currencyIcons.toCurrencyIcon}
                     convertFrom={toCurrency}
                     fromCurrency={fromCurrency}
                     isLoaded={toCurrencyLoading}
                 />
                 <Button
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
                     variant="primary"
                     icon="swap"
                     onClick={handleSwap}
